@@ -14,3 +14,5 @@ https://pdos.csail.mit.edu/6.S081/2025/index.html
 - Use AI for what should I learn and what should I do
 
 
+## Git
+
