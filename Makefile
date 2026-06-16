@@ -277,6 +277,7 @@ ifeq ($(LAB),util)
 	UEXTRA += user/sixfive.txt
 	UPROGS += $U/_memdump
 	UPROGS += $U/_sleep
+	UPROGS += $U/_sixfive
 endif
 
 
