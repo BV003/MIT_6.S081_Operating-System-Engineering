@@ -38,6 +38,15 @@ build a system call called interpose.
 
 ## Sandbox with allowed pathnames
 
+### Step 1: Adding the allowed_path field to the process checklist (proc.h) 
+### Step 2: Clearing and copying the allowed path on process creation (proc.c) 
+### Step 3: Saving the path argument inside sys_interpose (sysproc.c)
+### Step 4: Enforcing the Pathname check inside syscall() (syscall.c) 
 
+## Attack xv6
+To get a sense for how bugs can be exploited, we have introduced a bug into xv6 and your goal is to exploit that bug to steal a secret from another process.
 
-
+虚拟内存与物理内存的映射（Virtual & Physical Memory）
+- 每个进程都有自己的虚拟地址空间，看起来像是在独占整个内存。                                                                                 
+- 但实际上，虚拟地址是通过页表（Page Table）映射到物理内存（Physical Pages）上的。                                                           
+- 不同的进程可能会在不同的时间，共享并复用相同的物理内存页。 
