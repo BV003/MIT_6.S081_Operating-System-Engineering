@@ -1,0 +1,3 @@
+Answers to the Syscall Lab questions.
+1. The system call sandbox is implemented via a bitmask in the proc struct.
+2. The attack program accesses uninitialized recycled pages from the kernel free list.
