@@ -51,7 +51,7 @@ xv6-labs-2025/               <-- The root folder of the project
 - The Bridge (kernel/trampoline.S & kernel/trap.c): When a user program in user/ needs the kernel's help (e.g., calling sleep), it triggers a trap. The assembly in trampoline.S switches the CPU to Kernel mode safely, and trap.c decides how to handle the request.
 - System Call Enforcers (kernel/syscall.c): Once a trap occurs, the kernel looks at the system call number, checks the arguments, and runs the corresponding function in sysproc.c or sysfile.c.
 
-## Classes
+## xv6 Classes
 
 ```
                   +-----------------------------------+
