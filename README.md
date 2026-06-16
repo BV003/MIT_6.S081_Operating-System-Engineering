@@ -21,6 +21,14 @@ https://pdos.csail.mit.edu/6.S081/2025/index.html
 ```
 git checkout main
 git checkout util   
+```
 
+## Test
 
 ```
+cd xv6-labs-2025    
+make qemu    
+```
+
+Ctrl + A  (press together), then release, then press X to end qemu
+
