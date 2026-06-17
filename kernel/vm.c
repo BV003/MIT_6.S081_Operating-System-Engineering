@@ -157,7 +157,7 @@ _vmprint(pagetable_t pagetable, int depth, uint64 base_va)
       }
 
       uint64 pa = PTE2PA(pte);
-      printf("0x%016lx: pte 0x%016lx pa 0x%016lx\n", child_va, pte, pa);
+      printf("%p: pte %p pa %p\n", (void *)child_va, (void *)pte, (void *)pa);
 
       // If it is an internal page table pointer (not a leaf page), recurse:
       if ((pte & (PTE_R | PTE_W | PTE_X)) == 0) {
