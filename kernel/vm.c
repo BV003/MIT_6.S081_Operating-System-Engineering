@@ -143,8 +143,35 @@ walkaddr(pagetable_t pagetable, uint64 va)
 
 #if defined(LAB_PGTBL) || defined(SOL_MMAP) || defined(SOL_COW)
 void
-vmprint(pagetable_t pagetable) {
-  // your code here
+_vmprint(pagetable_t pagetable, int depth, uint64 base_va)
+{
+  for (int i = 0; i < 512; i++) {
+    pte_t pte = pagetable[i];
+    if (pte & PTE_V) {
+      // Calculate the virtual address prefix mapped by this index at the current depth
+      uint64 child_va = base_va | ((uint64)i << (12 + 9 * (2 - depth)));
+
+      // Print the appropriate indentation dots based on depth
+      for (int d = 0; d <= depth; d++) {
+        printf(" ..");
+      }
+
+      uint64 pa = PTE2PA(pte);
+      printf("0x%016lx: pte 0x%016lx pa 0x%016lx\n", child_va, pte, pa);
+
+      // If it is an internal page table pointer (not a leaf page), recurse:
+      if ((pte & (PTE_R | PTE_W | PTE_X)) == 0) {
+        _vmprint((pagetable_t)pa, depth + 1, child_va);
+      }
+    }
+  }
+}
+
+void
+vmprint(pagetable_t pagetable)
+{
+  printf("page table %p\n", pagetable);
+  _vmprint(pagetable, 0, 0);
 }
 #endif
 
